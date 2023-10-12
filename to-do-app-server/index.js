@@ -35,9 +35,9 @@ async function run() {
         const postTask = await taskCollection.insertOne(task);
         res.send(postTask);
     });
-    app.delete("/deleteTask", async(req, res) => {
+    app.delete("/deleteTask/:id", async(req, res) => {
         const id = req.params.id;
-        const query = {_id: ObjectId(id)}
+        const query = {_id: new ObjectId(id)}
         const deleteTask = await taskCollection.deleteOne(query)
         res.send(deleteTask);
     });
